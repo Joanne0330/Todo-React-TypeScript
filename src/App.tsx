@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// components
+import Header from './components/Header';
+import AddTodo from './components/AddTodo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type TodoObj = {
+  id: number;
+  title: string;
+  isComplete: boolean;
+}
+
+type State = {
+  list: TodoObj[];
+}
+
+export class App extends React.Component<any, State> {
+  state: State = {
+    list: [],
+
+  }
+  
+  handleAddTodo = (todo: string) => {
+    console.log(`in add Todo ${todo}`)
+    const idNum: number = (this.state.list).length + 1;
+    
+    const newTodo: TodoObj = {
+      id: idNum,
+      title: todo,
+      isComplete: false
+    }
+    
+    this.setState({ list: [...this.state.list, newTodo]})
+
+    console.log(this.state.list)
+  };
+
+
+  render() {
+
+    return (
+      <div>
+        <Header />
+        <AddTodo addTodo={this.handleAddTodo}/>
+        {this.state.list.map(todo => (
+          <p>{todo.title}</p>
+        ))}
+      </div>
+    );
+  }
 }
 
 export default App;
