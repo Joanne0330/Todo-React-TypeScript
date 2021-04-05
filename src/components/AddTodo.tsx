@@ -67,7 +67,8 @@ const buttonStyle: CSS.Properties = {
     backgroundColor: 'darkslategray',
     marginLeft: '5px',
     color: 'white',
-    borderRadius: '5px'
+    borderRadius: '5px',
+    cursor: 'pointer'
 }
 
 export default AddTodo;

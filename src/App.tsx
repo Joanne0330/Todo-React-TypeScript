@@ -2,8 +2,9 @@ import React from 'react';
 // components
 import Header from './components/Header';
 import AddTodo from './components/AddTodo';
+import TodoItem from './components/TodoItem';
 
-type TodoObj = {
+export type TodoObj = {
   id: number;
   title: string;
   isComplete: boolean;
@@ -28,7 +29,7 @@ export class App extends React.Component<any, State> {
       title: todo,
       isComplete: false
     }
-    
+
     this.setState({ list: [...this.state.list, newTodo]})
 
     console.log(this.state.list)
@@ -42,7 +43,7 @@ export class App extends React.Component<any, State> {
         <Header />
         <AddTodo addTodo={this.handleAddTodo}/>
         {this.state.list.map(todo => (
-          <p>{todo.title}</p>
+          <TodoItem  todo={todo}/>
         ))}
       </div>
     );
