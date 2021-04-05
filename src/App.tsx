@@ -35,6 +35,11 @@ export class App extends React.Component<any, State> {
     console.log(this.state.list)
   };
 
+  handleDeleteTodo = (id: number) => {
+    console.log(id)
+    this.setState({ list: [...this.state.list.filter(item => item.id !== id)] })
+  }
+
 
   render() {
 
@@ -43,7 +48,7 @@ export class App extends React.Component<any, State> {
         <Header />
         <AddTodo addTodo={this.handleAddTodo}/>
         {this.state.list.map(todo => (
-          <TodoItem  todo={todo}/>
+          <TodoItem  todo={todo} deleteTodo={this.handleDeleteTodo}/>
         ))}
       </div>
     );

@@ -8,6 +8,7 @@ import { TodoObj } from '../App';
 
 type Props = {
     todo: TodoObj;
+    deleteTodo: (id: number) => void;
 }
 export class TodoItem extends React.Component<Props> {
 
@@ -20,6 +21,7 @@ export class TodoItem extends React.Component<Props> {
                 {this.props.todo.title}
                 <button
                 style={buttonStyle}
+                onClick={() => this.props.deleteTodo(this.props.todo.id)}
                 > X </button>
             </h3>
             </div>
