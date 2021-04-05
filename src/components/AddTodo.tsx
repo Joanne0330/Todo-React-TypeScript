@@ -22,7 +22,7 @@ export class AddTodo extends React.Component<Props, State> {
     } 
     render() {
         return (
-            <div>
+            <div style={backgroundStyle}>
                 <form
                     style={formStyle}
                     onSubmit={this.onSubmit}
@@ -69,6 +69,11 @@ const buttonStyle: CSS.Properties = {
     color: 'white',
     borderRadius: '5px',
     cursor: 'pointer'
+}
+
+const backgroundStyle: CSS.Properties = {
+    backgroundColor: 'gainsboro', 
+    overflow: 'auto'
 }
 
 export default AddTodo;

@@ -36,8 +36,17 @@ export class App extends React.Component<any, State> {
   };
 
   handleDeleteTodo = (id: number) => {
-    console.log(id)
     this.setState({ list: [...this.state.list.filter(item => item.id !== id)] })
+  };
+
+  handleMarkComplete = (id: number) => {
+    console.log(id)
+    this.setState({ list: [...this.state.list.map(item => {
+      if(item.id === id) {
+        item.isComplete = !item.isComplete;
+      }
+      return item;
+    })]})
   }
 
 
@@ -48,7 +57,12 @@ export class App extends React.Component<any, State> {
         <Header />
         <AddTodo addTodo={this.handleAddTodo}/>
         {this.state.list.map(todo => (
-          <TodoItem  todo={todo} deleteTodo={this.handleDeleteTodo}/>
+          <TodoItem
+            key={todo.id}  
+            todo={todo} 
+            deleteTodo={this.handleDeleteTodo} 
+            markComplete={this.handleMarkComplete} 
+          />
         ))}
       </div>
     );
